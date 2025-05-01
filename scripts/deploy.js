@@ -7,18 +7,18 @@ async function main() {
   const unlockTime = currentTimestamp + lockDuration;
 
   console.log(
-    `Deploying Lock contract. Unlock time: ${unlockTime} (${new Date(
+    `Deploying TokenTimeLock contract. Unlock time: ${unlockTime} (${new Date(
       unlockTime * 1000
     )})`
   );
 
   // Get the contract factory
-  const Lock = await hre.ethers.getContractFactory("Lock");
+  const TokenTimeLock = await hre.ethers.getContractFactory("TokenTimeLock");
 
   // Deploy the contract with the unlock time as a parameter
-  const lock = await Lock.deploy(unlockTime);
+  const lock = await TokenTimeLock.deploy(unlockTime);
 
-  console.log(`Lock deployed to: ${lock.target}`);
+  console.log(`TokenTimeLock deployed to: ${lock.target}`);
 }
 
 // Handle async errors
